@@ -23,10 +23,34 @@ function costo(precio) {
     return auxiliar
 }
 
+function cambio(precioTotal, precio) {
+    let vueltos = precioTotal - precio
+    let aux = vueltos / 50
+
+    if (parseInt(aux) == 0) {
+        aux = vueltos / 10
+        if (parseInt(aux) != 0) {
+            alert(`Cambio: ${aux} monedas de 10`)
+        } else {
+            alert(`Pago completo`)
+        }
+
+    } else {
+        let cM = parseInt(aux)
+        vueltos -= 50
+        aux = vueltos / 10
+        if (parseInt(aux) != 0) {
+            alert(`Cambio: ${cM} monedas de 50, ${aux} de 10`)
+        }else {
+            alert("No hay más cambio")
+        }
+    } 
+
+    
+}
 
 
-
-console.log("Ejericicio Máquina Traga Monedas")
+console.log("Ejercicio Máquina Traga Monedas")
 
 precioProductos = [270, 340, 390] //lista de los precios equivalentes a A, B y C
 
@@ -41,7 +65,7 @@ while (confirm("¿Desea adquirir un producto?")) {
     alert(`Producto seleccionado: ${opc} \n Tiene un costo de ${precioProductos[opc - 1]}`)
 
     precioTotal = costo(precioProductos[opc - 1])
-    
+    cambio(precioTotal, precioProductos[opc - 1])
 }
 
 
